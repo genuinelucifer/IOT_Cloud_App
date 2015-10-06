@@ -24,7 +24,7 @@ public class StoreToDB extends AsyncTask<LocationData, Void, Void>  {
 			 attribute.add(new ReplaceableAttribute().withName(Utilities.GPS_LAT_ATTR_NAME).withValue(Double.toString(latitude)));
 			 attribute.add(new ReplaceableAttribute().withName(Utilities.GPS_LONG_ATTR_NAME).withValue(Double.toString(longitude)));
 			 attribute.add(new ReplaceableAttribute().withName(Utilities.GPS_TIMESTAMP_NAME).withValue(timestamp));
-			 Connection.awsSimpleDB.putAttributes(new PutAttributesRequest(Utilities.GPS_LOCATION_DOMAIN_NAME, Utilities.getUserName(), attribute));
+			 Connection.awsSimpleDB.putAttributes(new PutAttributesRequest(Utilities.GPS_LOCATION_DOMAIN_NAME, timestamp, attribute));
 			
 		} catch (Exception e) {
 				System.out.println(e.getMessage());

@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -99,6 +98,8 @@ public class MainActivity extends Activity {
 
         gpsTimer = new Timer();
         startRecording();
+
+
     }
 
     private static final String TAG = "Comment";

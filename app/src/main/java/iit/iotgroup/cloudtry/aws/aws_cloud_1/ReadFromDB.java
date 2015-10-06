@@ -5,46 +5,46 @@ import java.util.List;
 import com.amazonaws.services.simpledb.model.SelectRequest;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class ReadFromDB extends AsyncTask<Void, Void, Void> {
 
 	public static LocationData[] ldata;
 	
-	public static LocationData[] getAllMovies() throws Exception
+	public static void getAllMovies() throws Exception
 	{
 		SelectRequest selectRequest=  new SelectRequest("select * from " + Utilities.GPS_LOCATION_DOMAIN_NAME).withConsistentRead(true);
 		
 		List<com.amazonaws.services.simpledb.model.Item> items  = Connection.getAwsSimpleDB().select(selectRequest).getItems();
-		
+		Log.w("TOTAL got : ", "Total " + items.size() + " got");
 		try
 		{
 		com.amazonaws.services.simpledb.model.Item temp1;
 		int size= items.size();
-		LocationData[] locationList= new LocationData[size];
+		ldata= new LocationData[size];
 		
 		for(int i=0; i<size;i++)
 		{
 			temp1= items.get( i );
 			
 			List<com.amazonaws.services.simpledb.model.Attribute> tempAttribute= temp1.getAttributes();
-			locationList[i]= new LocationData();
+			ldata[i]= new LocationData();
 			for(int j=0; j< tempAttribute.size();j++)
 			{
 				if(tempAttribute.get(j).getName().equals(Utilities.GPS_LAT_ATTR_NAME))
 				{
-					locationList[i].latitude=Float.valueOf(tempAttribute.get(j).getValue());
+					ldata[i].latitude=Float.valueOf(tempAttribute.get(j).getValue());
 				}
 				else if(tempAttribute.get(j).getName().equals(Utilities.GPS_TIMESTAMP_NAME))
 				{
-					locationList[i].timeStamp =tempAttribute.get(j).getValue();
+					ldata[i].timeStamp =tempAttribute.get(j).getValue();
 				}
 				else if(tempAttribute.get(j).getName().equals(Utilities.GPS_LONG_ATTR_NAME))
 				{
-					locationList[i].longitude =Float.valueOf(tempAttribute.get(j).getValue());
+					ldata[i].longitude =Float.valueOf(tempAttribute.get(j).getValue());
 				}
 			}
 		}
-		return locationList;
 		}
 		catch( Exception eex)
 		{
@@ -54,11 +54,9 @@ public class ReadFromDB extends AsyncTask<Void, Void, Void> {
 	
 	@Override
 	protected Void doInBackground(Void... params) {
-		// TODO Auto-generated method stub
 		try {
-			ldata = getAllMovies();
+			getAllMovies();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

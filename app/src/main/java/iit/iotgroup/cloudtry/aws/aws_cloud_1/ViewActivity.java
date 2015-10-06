@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ViewActivity extends Activity {
-	static ReadFromDB rDB;
+	ReadFromDB rDB;
 	LocationData[] locList;
 	ListView loclv;
 	ArrayList<String> locListString;
@@ -47,9 +47,10 @@ public class ViewActivity extends Activity {
             while(rDB.getStatus() != AsyncTask.Status.FINISHED);
             locList = ReadFromDB.ldata;
             locListString.clear();
-            for(LocationData ld : locList){
-                locListString.add(ld.getString());
-            }
+            if(locList != null)
+                for(LocationData ld : locList){
+                    locListString.add(ld.getString());
+                }
             return null;
 		}
 
@@ -59,7 +60,10 @@ public class ViewActivity extends Activity {
             pd.setMessage("");
             pd.dismiss();
             adapter.notifyDataSetChanged();
-            Toast.makeText(ViewActivity.this, "Data Loaded!!", Toast.LENGTH_SHORT).show();
+            if(locList != null)
+                Toast.makeText(ViewActivity.this, "Data Loaded!!", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(ViewActivity.this, "ERROR! Data could NOT be Loaded!!", Toast.LENGTH_SHORT).show();
         }
 
 	}

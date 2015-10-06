@@ -15,6 +15,9 @@ public class Utilities {
     public static String GPS_LONG_ATTR_NAME = "longitude";
     public static String GPS_TIMESTAMP_NAME = "timeStamp";
 
+    public static String ACCESS_KEY = "AKIAJ4WB2PVVVTKSJLFQ";
+    public static String SECRET_KEY = "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";
+
     public static String getUserName()
     {
         return "Abhinav";
