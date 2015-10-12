@@ -7,40 +7,85 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/material_blue_grey_800"
     tools:context=".MainActivity" >
 
-    <!--<ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:src="@drawable/movielogo" />-->
-
     <TextView
-        android:id="@+id/tvTitle"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:text="@string/strSetInterval"
+        android:textColor="#000000"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:padding="25dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:text="Welcome to GPS database."
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="21sp"
+                android:text="@string/strHours"/>
+            <NumberPicker
+                android:id="@+id/npNumHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true"  />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="21sp"
+                android:text="@string/strMinutes"/>
+            <NumberPicker
+                android:id="@+id/npNumMinutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true"  />
+            </LinearLayout>
+
+    </LinearLayout>
+
 
     <Button
-        android:id="@+id/btnStore"
+        android:id="@+id/btnSetInterval"
+        android:text="@string/strBtnSet"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Store My Location" />
+        android:background="@color/material_blue_grey_900"/>
 
-    <Button
-        android:id="@+id/btnView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="44dp"
-        android:text="View my locations" />
 
 </LinearLayout>

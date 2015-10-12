@@ -3,4 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="strSetInterval">Please set the interval between 2 data saves.</string>
+    <string name="strBtnSet">Set</string>
+    <string name="strHours">Hours</string>
+    <string name="strMinutes">Minutes</string>
 </resources>

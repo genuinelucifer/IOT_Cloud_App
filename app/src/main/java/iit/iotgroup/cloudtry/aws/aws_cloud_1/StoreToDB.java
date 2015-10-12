@@ -3,9 +3,7 @@ package iit.iotgroup.cloudtry.aws.aws_cloud_1;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.amazonaws.services.simpledb.model.CreateDomainRequest;
 import com.amazonaws.services.simpledb.model.PutAttributesRequest;
@@ -13,10 +11,10 @@ import com.amazonaws.services.simpledb.model.ReplaceableAttribute;
 
 public class StoreToDB extends AsyncTask<LocationData, Void, Void>  {
 
-	public static Context appctx;
+	//public static Context appctx;
 	
 	// 2. Create Domain and save movie information in domain
-	public static void saveMovie(double latitude, double longitude, String timestamp)
+	public static void saveLocation(double latitude, double longitude, String timestamp)
 	{
 		try {
 			 Connection.getAwsSimpleDB().createDomain(new CreateDomainRequest( Utilities.GPS_LOCATION_DOMAIN_NAME));
@@ -33,14 +31,14 @@ public class StoreToDB extends AsyncTask<LocationData, Void, Void>  {
 	
 	@Override
 	protected Void doInBackground(LocationData... params) {
-		saveMovie(params[0].latitude, params[0].longitude, params[0].timeStamp);
+		saveLocation(params[0].latitude, params[0].longitude, params[0].timeStamp);
 		return null;
 	}
 
 	@Override
 	protected void onPostExecute(Void param)
 	{
-		Toast.makeText(appctx, "Location stored successfully!", Toast.LENGTH_LONG).show();
+		//Toast.makeText(appctx, "Location stored successfully!", Toast.LENGTH_LONG).show();
 	}
 	
 }
